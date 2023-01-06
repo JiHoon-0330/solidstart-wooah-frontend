@@ -10,7 +10,11 @@ export default function WeversePage() {
   const [from, setFrom] = createSignal("");
   const [list, setList] = createSignal<WeverseData[]>([]);
 
-  const [data, { isRefetching }] = queryWeverse(from);
+  const [data, { isRefetching, refetch }] = queryWeverse(from);
+
+  if (!data() && !list().length) {
+    refetch();
+  }
 
   createEffect(() => {
     setList((prev) => {
