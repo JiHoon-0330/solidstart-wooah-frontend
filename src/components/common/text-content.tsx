@@ -1,0 +1,17 @@
+type Props = {
+  text: string;
+};
+
+export default function TextContent({ text }: Props) {
+  return (
+    <div
+      style={{
+        "white-space": "pre-line",
+        "font-size": "16rem",
+        "font-weight": 700,
+      }}
+    >
+      {text}
+    </div>
+  );
+}
