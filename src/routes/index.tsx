@@ -1,5 +1,5 @@
 import { createEffect, createSignal, For, Show, Suspense } from "solid-js";
-import Card from "~/components/common/Card";
+import Card from "~/components/common/card";
 import Loading from "~/components/common/loading";
 import WeverseCard from "~/components/weverse/weverse-card";
 import { queryWeverse } from "~/lib/api/wooah-api/query";

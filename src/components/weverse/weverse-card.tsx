@@ -1,5 +1,5 @@
 import { For, Show } from "solid-js";
-import Card from "~/components/common/Card";
+import Card from "~/components/common/card";
 import CreateAt from "~/components/common/created-at";
 import Image from "~/components/common/image";
 import TextContent from "~/components/common/text-content";
