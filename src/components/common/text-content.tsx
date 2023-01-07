@@ -7,6 +7,7 @@ export default function TextContent({ text }: Props) {
     <div
       style={{
         "white-space": "pre-line",
+        "word-break": "break-all",
         "font-size": "16rem",
         "font-weight": 700,
       }}
