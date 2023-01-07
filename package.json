@@ -21,6 +21,7 @@
     "@types/axios": "^0.14.0",
     "@types/lodash": "^4.14.191",
     "axios": "^1.2.2",
+    "dotenv": "^16.0.3",
     "fast-json-stable-stringify": "^2.1.0",
     "lodash": "^4.17.21",
     "solid-js": "^1.6.2",
