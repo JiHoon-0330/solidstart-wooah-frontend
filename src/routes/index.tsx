@@ -1,24 +1,36 @@
 import { createEffect, createSignal, For, Show, Suspense } from "solid-js";
+import { RouteDataArgs, useRouteData } from "solid-start";
 import Card from "~/components/common/card";
 import Loading from "~/components/common/loading";
 import WeverseCard from "~/components/weverse/weverse-card";
 import { queryWeverse } from "~/lib/api/wooah-api/query";
 import { WeverseData } from "~/lib/api/wooah-api/wooah-api";
 
+export function routeData({}: RouteDataArgs) {
+  const [ssrData] = queryWeverse();
+
+  return { ssrData };
+}
+
 export default function WeversePage() {
+  const { ssrData } = useRouteData<typeof routeData>();
+
   const shownList = new Set<string>();
+
   const [from, setFrom] = createSignal("");
-  const [list, setList] = createSignal<WeverseData[]>([]);
+  const [list, setList] = createSignal<WeverseData[]>(ssrData()?.data ?? []);
 
-  const [data, { isRefetching, refetch }] = queryWeverse(from);
+  const [fetchData, { isRefetching }] = queryWeverse(from);
 
-  if (!data() && !list().length) {
-    refetch();
-  }
+  const data = fetchData ?? ssrData;
 
   createEffect(() => {
     setList((prev) => {
-      return [...prev, ...(data()?.data ?? [])];
+      const filtered = (data()?.data ?? [])?.filter(
+        ({ postId }) => !shownList.has(postId),
+      );
+
+      return [...prev, ...filtered];
     });
   });
 
@@ -40,15 +52,14 @@ export default function WeversePage() {
         </For>
       </Show>
 
-      <Show when={!isRefetching()}>
-        <Loading
-          loadMore={() => {
-            if (data()?.hasMore) {
-              setFrom(data()?.lastId!);
-            }
-          }}
-        />
-      </Show>
+      <Loading
+        isRefetching={isRefetching()}
+        loadMore={() => {
+          if (data()?.hasMore) {
+            setFrom(data()?.lastId!);
+          }
+        }}
+      />
     </Suspense>
   );
 }
