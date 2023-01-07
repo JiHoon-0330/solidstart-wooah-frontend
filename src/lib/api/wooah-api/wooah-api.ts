@@ -40,8 +40,56 @@ export type GetWeverse = {
   hasMore: boolean;
 };
 
+type TwitterData = {
+  sortIndex: string;
+  isRt: boolean;
+  name: string;
+  screen_name: string;
+  full_text: string;
+  created_at: string;
+  hashtags: string[];
+  user_mentions: string[];
+  urls: {
+    display_url: string;
+    expanded_url: string;
+    url: string;
+  }[];
+  media: (
+    | {
+        type: "video";
+        url: string;
+        src: string;
+        poster: string;
+      }
+    | {
+        src: string;
+        origin: string;
+        width: number;
+        height: number;
+        type: "photo";
+        url: string;
+      }
+  )[];
+  meta: {
+    card: string;
+    site: string;
+    src: string;
+    origin: string;
+    title: string;
+    description: string;
+  }[];
+};
+
+export type GetTwitter = {
+  data: (TwitterData & {
+    quoted?: TwitterData;
+  })[];
+  cursor: string;
+};
+
 export type WooahApi = {
   getWeverse(from?: string): ApiResponse<GetWeverse>;
+  getTwitter(from?: string): ApiResponse<GetTwitter>;
 };
 
 export const wooahApi: WooahApi = {
@@ -49,6 +97,16 @@ export const wooahApi: WooahApi = {
     return wooahApiInstance({
       method: "GET",
       url: "/weverse",
+      params: {
+        from,
+      },
+    });
+  },
+
+  getTwitter(from) {
+    return wooahApiInstance({
+      method: "GET",
+      url: "/twitter",
       params: {
         from,
       },
