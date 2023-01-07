@@ -4,7 +4,7 @@ import axios, {
   CreateAxiosDefaults,
 } from "axios";
 
-export type APiResponse<Data, Error = any> = Promise<
+export type ApiResponse<Data, Error = any> = Promise<
   | {
       data: Data;
       error: undefined;
@@ -22,7 +22,7 @@ const createInstance = (createConfig?: CreateAxiosDefaults) => {
 
   return async <Data, Error = any>(
     config: AxiosRequestConfig,
-  ): APiResponse<Data, Error> => {
+  ): ApiResponse<Data, Error> => {
     try {
       const { data } = await instance(config);
 

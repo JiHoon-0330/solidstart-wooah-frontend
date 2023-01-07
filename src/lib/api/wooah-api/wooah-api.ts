@@ -1,4 +1,4 @@
-import { APiResponse, wooahApiInstance } from "~/lib/api";
+import { ApiResponse, wooahApiInstance } from "~/lib/api";
 import { WeverseMemberId } from "~/lib/constant";
 
 export type Author =
@@ -41,7 +41,7 @@ export type GetWeverse = {
 };
 
 export type WooahApi = {
-  getWeverse(from?: string): APiResponse<GetWeverse>;
+  getWeverse(from?: string): ApiResponse<GetWeverse>;
 };
 
 export const wooahApi: WooahApi = {
