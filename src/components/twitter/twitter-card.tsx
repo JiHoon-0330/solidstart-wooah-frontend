@@ -89,7 +89,14 @@ export default function TwitterCard({
           <For each={media}>
             {(item) => {
               if (item.type === "photo") {
-                return <Image src={item.src} origin={item.origin} />;
+                return (
+                  <Image
+                    src={item.src}
+                    origin={item.origin}
+                    width={item.width}
+                    height={item.height}
+                  />
+                );
               }
               return <Video src={item.src} poster={item.poster} />;
             }}

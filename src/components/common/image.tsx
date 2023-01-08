@@ -14,8 +14,10 @@ export default function Image({ src, origin, width, height }: Props) {
         style={{
           width: "100%",
           "border-radius": "10rem",
+          "aspect-ratio": `auto ${width} / ${height}`,
         }}
         src={src}
+        loading={"lazy"}
         alt=""
       />
     </A>
