@@ -29,13 +29,14 @@ export default function ReelsCard({ body, createdAt, poster, src }: Props) {
         <CreatedAt createdAt={createdAt * 1000} />
       </div>
       <Video
-        src={`https://wooah-api.dlwlrma.app/instagram/video?url=${encodeURIComponent(
-          src,
-        )}&createdAt=${createdAt}`}
-        poster={poster?.replace(
-          /.*\/v\//,
-          "/api/image?src=https://scontent.cdninstagram.com/v/",
-        )}
+        src={
+          isIOS()
+            ? proxy(src)
+            : `https://wooah-api.dlwlrma.app/instagram/video?url=${encodeURIComponent(
+                src,
+              )}&createdAt=${createdAt}`
+        }
+        poster={proxy(poster)}
         width={720}
         height={1280}
       />
@@ -60,3 +61,22 @@ function formatter(body: ReelsData["body"]) {
     );
   });
 }
+
+function proxy(url: string) {
+  return url?.replace(/.*\/v\//, "/instagram/v/");
+}
+
+export const isIOS = () => {
+  if (typeof window === "undefined") return true;
+  return (
+    [
+      "iPad Simulator",
+      "iPhone Simulator",
+      "iPod Simulator",
+      "iPad",
+      "iPhone",
+      "iPod",
+    ].includes(navigator.platform) ||
+    (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+  );
+};
