@@ -1,6 +1,7 @@
 import { Accessor } from "solid-js";
 import { createTurboResource } from "turbo-solid";
 import {
+  GetReels,
   GetTwitter,
   GetWeverse,
   wooahApi,
@@ -27,6 +28,21 @@ export function queryTwitter(from: Accessor<string> = () => "") {
     {
       async fetcher(key, additional) {
         const { data, error, status } = await wooahApi.getTwitter(from());
+
+        if (status === "failure") throw error;
+
+        return data;
+      },
+    },
+  );
+}
+
+export function queryReels(from: Accessor<string> = () => "") {
+  return createTurboResource<GetReels>(
+    () => `https://wooah-api.dlwlrma.app/instagram/reels?from=${from()}`,
+    {
+      async fetcher(key, additional) {
+        const { data, error, status } = await wooahApi.getReels(from());
 
         if (status === "failure") throw error;
 

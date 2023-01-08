@@ -86,13 +86,27 @@ export type GetTwitter = {
   cursor: string;
 };
 
+export type ReelsData = {
+  body: string;
+  createdAt: number;
+  poster: string;
+  src: string;
+};
+
+export type GetReels = {
+  data: ReelsData[];
+  max_id: string;
+  more_available: boolean;
+};
+
 export type WooahApi = {
   getWeverse(from?: string): ApiResponse<GetWeverse>;
   getTwitter(from?: string): ApiResponse<GetTwitter>;
+  getReels(from?: string): ApiResponse<GetReels>;
 };
 
 export const wooahApi: WooahApi = {
-  getWeverse(from) {
+  getWeverse(from?) {
     return wooahApiInstance({
       method: "GET",
       url: "/weverse",
@@ -102,10 +116,20 @@ export const wooahApi: WooahApi = {
     });
   },
 
-  getTwitter(from) {
+  getTwitter(from?) {
     return wooahApiInstance({
       method: "GET",
       url: "/twitter",
+      params: {
+        from,
+      },
+    });
+  },
+
+  getReels(from?) {
+    return wooahApiInstance({
+      method: "GET",
+      url: "/instagram/reels",
       params: {
         from,
       },

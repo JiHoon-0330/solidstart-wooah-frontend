@@ -7,6 +7,7 @@ import TextContent from "~/components/common/text-content";
 import Username from "~/components/common/username";
 import Video from "~/components/common/video";
 import { TwitterData } from "~/lib/api/wooah-api/wooah-api";
+import { parseHashtag } from "~/lib/string/hashtag";
 
 type Props = TwitterData;
 
@@ -134,10 +135,6 @@ function cardBackgroundColor(
     default:
       return screen_name === "wooah_nv" ? "var(--WOOAH)" : "var(--DEFAULT)";
   }
-}
-
-function parseHashtag(href: string, display: string) {
-  return `<a href="${href}" target="_blank" class="hashtag link">${display}</a>`;
 }
 
 function parseFullText(
