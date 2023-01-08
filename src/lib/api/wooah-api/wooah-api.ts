@@ -40,7 +40,7 @@ export type GetWeverse = {
   hasMore: boolean;
 };
 
-type TwitterData = {
+export type TwitterData = {
   sortIndex: string;
   isRt: boolean;
   name: string;
@@ -78,12 +78,11 @@ type TwitterData = {
     title: string;
     description: string;
   }[];
+  quoted?: TwitterData;
 };
 
 export type GetTwitter = {
-  data: (TwitterData & {
-    quoted?: TwitterData;
-  })[];
+  data: TwitterData[];
   cursor: string;
 };
 

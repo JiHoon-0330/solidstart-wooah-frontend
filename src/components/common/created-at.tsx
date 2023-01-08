@@ -1,5 +1,5 @@
 type Props = {
-  createdAt: number;
+  createdAt: number | string;
 };
 
 export default function CreatedAt({ createdAt }: Props) {

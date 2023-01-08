@@ -1,6 +1,5 @@
 import { For } from "solid-js";
-import { MEMBERS } from "~/lib/constant";
-import { memberColor } from "~/lib/style";
+import { Member, MEMBERS } from "~/lib/constant";
 
 export default function Header() {
   return (
@@ -20,7 +19,7 @@ export default function Header() {
               flex: "1",
               "text-align": "center",
               padding: "2rem 0",
-              "background-color": memberColor(member),
+              "background-color": backgroundColor(member),
             }}
           >
             {member}
@@ -29,4 +28,26 @@ export default function Header() {
       </For>
     </header>
   );
+}
+
+function backgroundColor(member: Member) {
+  switch (member) {
+    case "나나":
+      return "#dbeafe";
+
+    case "우연":
+      return "#ede9fe";
+
+    case "소라":
+      return "#fee2e2";
+
+    case "루시":
+      return "#fce7f3";
+
+    case "민서":
+      return "#d1fae5";
+
+    default:
+      const check: never = member;
+  }
 }

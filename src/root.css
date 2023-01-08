@@ -4,6 +4,8 @@
   --SORA: #fee2e2;
   --LUCY: #fce7f3;
   --MINSEO: #d1fae5;
+  --WOOAH: #ffedd2;
+  --DEFAULT: #e5e7eb;
 }
 
 * {
@@ -35,6 +37,15 @@ body {
 a {
   text-decoration: none;
   color: inherit;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.hashtag {
+  word-break: break-word;
+  color: #1d98f0;
 }
 
 @media (min-width: 600px) {

@@ -11,8 +11,7 @@ export default function TextContent({ text }: Props) {
         "font-size": "16rem",
         "font-weight": 700,
       }}
-    >
-      {text}
-    </div>
+      innerHTML={text}
+    />
   );
 }
