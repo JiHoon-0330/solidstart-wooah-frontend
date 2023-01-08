@@ -25,7 +25,7 @@ export default function TwitterCard({
   quoted,
 }: Props) {
   return (
-    <div>
+    <div data-component={"TwitterCard"}>
       <Card
         style={{
           padding: "10rem",

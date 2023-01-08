@@ -9,7 +9,7 @@ type Props = {
 
 export default function Image({ src, origin, width, height }: Props) {
   return (
-    <A href={origin} target="_black">
+    <A data-component={"Image"} href={origin} target="_black">
       <img
         style={{
           width: "100%",

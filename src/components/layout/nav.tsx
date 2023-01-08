@@ -5,6 +5,7 @@ import { PAGES } from "~/lib/constant";
 export default function Nav() {
   return (
     <nav
+      data-component={"Nav"}
       style={{
         position: "sticky",
         bottom: "0",

@@ -25,6 +25,7 @@ export default function Layout(props: Props) {
 
   return (
     <main
+      data-component={"Layout"}
       style={{
         width: "min(100vw, 600rem)",
         "min-height": `${height()}px`,

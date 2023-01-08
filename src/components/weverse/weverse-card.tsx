@@ -22,7 +22,7 @@ export default function WeverseCard({
   video,
 }: Props) {
   return (
-    <div>
+    <div data-component={"WeverseCard"}>
       <Card
         style={{
           padding: "10rem",

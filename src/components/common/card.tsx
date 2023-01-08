@@ -7,18 +7,21 @@ type Props = {
 
 export default function Card({ children, style }: Props) {
   return (
-    <div
-      style={{
-        "background-color": "#f3f4f6",
-        "border-radius": "10rem",
-        display: "flex",
-        "flex-direction": "column",
-        gap: "15rem",
-        ...removeNull(style),
-      }}
-    >
-      {children}
-    </div>
+    <>
+      <div
+        data-component={"Card"}
+        style={{
+          "border-radius": "10rem",
+          "background-color": "#f3f4f6",
+          display: "flex",
+          "flex-direction": "column",
+          gap: "15rem",
+          ...removeNull(style),
+        }}
+      >
+        {children}
+      </div>
+    </>
   );
 }
 

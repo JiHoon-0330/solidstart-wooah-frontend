@@ -12,6 +12,7 @@ export default function CreatedAt({ createdAt }: Props) {
 
   return (
     <div
+      data-component={"CreatedAt"}
       style={{
         "font-size": "14rem",
         "font-weight": 700,

@@ -18,7 +18,7 @@ export default function Loading({ isRefetching, loadMore }: Props) {
   }
 
   return (
-    <div ref={observer}>
+    <div data-component={"Loading"} ref={observer}>
       <Card
         style={{
           height: "200rem",

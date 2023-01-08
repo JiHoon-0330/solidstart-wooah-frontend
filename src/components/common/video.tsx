@@ -6,5 +6,7 @@ type Props = {
 };
 
 export default function Video({ src, poster, width, height }: Props) {
-  return <video src={src} poster={poster} controls></video>;
+  return (
+    <video data-component={"Video"} src={src} poster={poster} controls></video>
+  );
 }

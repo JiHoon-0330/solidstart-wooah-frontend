@@ -5,6 +5,7 @@ type Props = {
 export default function TextContent({ text }: Props) {
   return (
     <div
+      data-component={"TextContent"}
       style={{
         "white-space": "pre-line",
         "word-break": "break-all",

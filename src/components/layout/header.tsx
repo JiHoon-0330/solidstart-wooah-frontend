@@ -4,6 +4,7 @@ import { Member, MEMBERS } from "~/lib/constant";
 export default function Header() {
   return (
     <header
+      data-component={"Header"}
       style={{
         position: "sticky",
         top: "0",
