@@ -1,0 +1,8 @@
+{
+  "rewrites": [
+    {
+      "source": "/instagram/:match*",
+      "destination": "https://scontent.cdninstagram.com/:match*"
+    }
+  ]
+}
