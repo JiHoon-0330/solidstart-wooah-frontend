@@ -1,4 +1,5 @@
 import Card from "~/components/common/card";
+import { css } from "~/lib/style";
 
 type Props = {
   isRefetching: boolean;
@@ -18,8 +19,18 @@ export default function Loading({ isRefetching, loadMore }: Props) {
 
   return (
     <div ref={observer}>
-      <Card height={"200rem"} padding="7rem">
-        <Card background-color={"#e5e7eb"} height="100%" />
+      <Card
+        style={{
+          height: "200rem",
+          padding: "7rem",
+        }}
+      >
+        <Card
+          style={{
+            height: "100%",
+            "background-color": css.color("--DEFAULT"),
+          }}
+        />
       </Card>
     </div>
   );

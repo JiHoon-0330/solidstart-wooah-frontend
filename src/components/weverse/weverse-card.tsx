@@ -23,7 +23,12 @@ export default function WeverseCard({
 }: Props) {
   return (
     <div>
-      <Card background-color={cardBackgroundColor(author)} padding="10rem">
+      <Card
+        style={{
+          padding: "10rem",
+          "background-color": cardBackgroundColor(author),
+        }}
+      >
         <div
           style={{
             display: "flex",

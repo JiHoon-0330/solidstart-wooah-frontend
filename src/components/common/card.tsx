@@ -2,9 +2,10 @@ import { JSX } from "solid-js";
 
 type Props = {
   children?: JSX.Element;
-} & JSX.CSSProperties;
+  style?: JSX.CSSProperties;
+};
 
-export default function Card({ children, ...style }: Props) {
+export default function Card({ children, style }: Props) {
   return (
     <div
       style={{
@@ -13,10 +14,21 @@ export default function Card({ children, ...style }: Props) {
         display: "flex",
         "flex-direction": "column",
         gap: "15rem",
-        ...style,
+        ...removeNull(style),
       }}
     >
       {children}
     </div>
   );
+}
+
+function removeNull(obj?: Object) {
+  if (!(typeof obj === "object" && obj instanceof Object)) return {};
+
+  return Object.entries(obj).reduce((result, [key, value]) => {
+    if (value == null) return result;
+
+    result[key] = value;
+    return result;
+  }, {} as Record<string, any>);
 }

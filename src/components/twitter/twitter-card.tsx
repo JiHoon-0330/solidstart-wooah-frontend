@@ -27,8 +27,10 @@ export default function TwitterCard({
   return (
     <div>
       <Card
-        background-color={cardBackgroundColor(screen_name, full_text)}
-        padding={"10rem"}
+        style={{
+          padding: "10rem",
+          "background-color": cardBackgroundColor(screen_name, full_text),
+        }}
       >
         <div>
           <div

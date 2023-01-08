@@ -44,7 +44,11 @@ export default function TwitterPage() {
             shownList.add(item.sortIndex);
 
             return (
-              <Card padding={"7rem"}>
+              <Card
+                style={{
+                  padding: "7rem",
+                }}
+              >
                 <TwitterCard {...item} />
               </Card>
             );

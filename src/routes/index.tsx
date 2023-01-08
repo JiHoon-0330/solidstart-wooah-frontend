@@ -44,7 +44,11 @@ export default function WeversePage() {
             shownList.add(item.postId);
 
             return (
-              <Card padding="7rem">
+              <Card
+                style={{
+                  padding: "7rem",
+                }}
+              >
                 <WeverseCard {...item} />
               </Card>
             );
